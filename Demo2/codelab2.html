@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f3eacb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #5cc85f;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        text-align: center;
+      }
+
+      h2 {
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        width: 100px;
+        padding: 10px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #000;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Form Pendaftaran</h2>
+      <form id="registrationForm">
+        <input type="text" id="username" placeholder="Masukkan username" />
+        <input type="email" id="email" placeholder="Masukkan email" />
+        <input type="password" id="password" placeholder="Masukkan password" />
+        <button type="button" onclick="validasi()">Daftar</button>
+      </form>
+    </div>
+
+    <script>
+      function validasi() {
+        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        if (username === "" || email === "" || password === "") {
+          alert("Error: Semua field harus diisi!");
+        } else {
+          alert("Error: Pendaftaran berhasil!");
+        }
+      }
+    </script>
+  </body>
+</html>
