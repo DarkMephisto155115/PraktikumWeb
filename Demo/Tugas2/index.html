@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f0f8ff;
+      }
+      .todo-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .todo-item button {
+        background-color: #007bff;
+        border: none;
+        margin-left: 5px;
+      }
+      .priority-buttons {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="text-center">To-Do List</h2>
+
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Masukkan tugas yang ingin diselesaikan"
+          id="todo-input"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" id="add-btn">
+            Add
+          </button>
+        </div>
+      </div>
+
+      <ul class="list-group" id="todo-list"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      document.getElementById("add-btn").addEventListener("click", function () {
+        const todoText = document.getElementById("todo-input").value;
+        if (todoText === "") {
+          alert("Input tidak boleh kosong");
+        } else {
+          const todoList = document.getElementById("todo-list");
+          const newTodo = document.createElement("li");
+          newTodo.className = "list-group-item todo-item";
+
+          newTodo.innerHTML = `
+              <span>${todoText}</span>
+              <div class="priority-buttons">
+                <button class="btn btn-success btn-sm up-btn">⬆️</button>
+                <button class="btn btn-info btn-sm down-btn">⬇️</button>
+                <button class="btn btn-danger btn-sm delete-btn">🗑️</button>
+              </div>
+            `;
+          todoList.appendChild(newTodo);
+          document.getElementById("todo-input").value = "";
+          newTodo
+            .querySelector(".up-btn")
+            .addEventListener("click", function () {
+              const prevTodo = newTodo.previousElementSibling;
+              if (prevTodo) {
+                todoList.insertBefore(newTodo, prevTodo);
+              }
+            });
+
+          newTodo
+            .querySelector(".down-btn")
+            .addEventListener("click", function () {
+              const nextTodo = newTodo.nextElementSibling;
+              if (nextTodo) {
+                todoList.insertBefore(nextTodo, newTodo);
+              }
+            });
+
+          newTodo
+            .querySelector(".delete-btn")
+            .addEventListener("click", function () {
+              todoList.removeChild(newTodo);
+            });
+        }
+      });
+    </script>
+  </body>
+</html>
