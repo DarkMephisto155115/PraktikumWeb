@@ -11,7 +11,35 @@
     />
     <style>
       body {
-        background-color: #f0f8ff;
+        background-color: #1b1b1b;
+        color: #e5e5e5;
+      }
+      .container {
+        background-color: #282828;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      .inputText-center {
+        color: #ff4444;
+        inputtext-shadow: 2px 2px 8px black;
+      }
+      .form-control {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #444;
+      }
+      .btn-primary {
+        background-color: #555;
+        border-color: #333;
+      }
+      .btn-primary:hover {
+        background-color: #333;
+        border-color: #ff4444;
+      }
+      .list-group-item {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #444;
       }
       .todo-item {
         display: flex;
@@ -20,25 +48,47 @@
         margin-bottom: 10px;
       }
       .todo-item button {
-        background-color: #007bff;
+        background-color: #444;
         border: none;
         margin-left: 5px;
       }
+      .todo-item button:hover {
+        background-color: #ff4444;
+        color: #fff;
+      }
       .priority-buttons {
         display: flex;
+      }
+      .btn-sm {
+        color: #fff;
+      }
+      .btn-success {
+        background-color: #5a5a5a;
+        border-color: #5a5a5a;
+      }
+      .btn-info {
+        background-color: #505050;
+        border-color: #505050;
+      }
+      .btn-danger {
+        background-color: #b30000;
+        border-color: #800000;
+      }
+      .btn-danger:hover {
+        background-color: #ff4444;
       }
     </style>
   </head>
   <body>
     <div class="container mt-5">
-      <h2 class="text-center">To-Do List</h2>
+      <h2 class="inputText-center">To-Do List</h2>
 
       <div class="input-group mb-3">
         <input
-          type="text"
+          type="inputText"
           class="form-control"
-          placeholder="Masukkan tugas yang ingin diselesaikan"
-          id="todo-input"
+          placeholder="Masukkan To-Do List"
+          id="input"
         />
         <div class="input-group-append">
           <button class="btn btn-primary" type="button" id="add-btn">
@@ -56,49 +106,68 @@
 
     <script>
       document.getElementById("add-btn").addEventListener("click", function () {
-        const todoText = document.getElementById("todo-input").value;
-        if (todoText === "") {
+        const input = document.getElementById("input");
+        const inputText = input.value;
+
+        if (inputText === "") {
           alert("Input tidak boleh kosong");
         } else {
-          const todoList = document.getElementById("todo-list");
-          const newTodo = document.createElement("li");
-          newTodo.className = "list-group-item todo-item";
-
-          newTodo.innerHTML = `
-              <span>${todoText}</span>
-              <div class="priority-buttons">
-                <button class="btn btn-success btn-sm up-btn">⬆️</button>
-                <button class="btn btn-info btn-sm down-btn">⬇️</button>
-                <button class="btn btn-danger btn-sm delete-btn">🗑️</button>
-              </div>
-            `;
-          todoList.appendChild(newTodo);
-          document.getElementById("todo-input").value = "";
-          newTodo
-            .querySelector(".up-btn")
-            .addEventListener("click", function () {
-              const prevTodo = newTodo.previousElementSibling;
-              if (prevTodo) {
-                todoList.insertBefore(newTodo, prevTodo);
-              }
-            });
-
-          newTodo
-            .querySelector(".down-btn")
-            .addEventListener("click", function () {
-              const nextTodo = newTodo.nextElementSibling;
-              if (nextTodo) {
-                todoList.insertBefore(nextTodo, newTodo);
-              }
-            });
-
-          newTodo
-            .querySelector(".delete-btn")
-            .addEventListener("click", function () {
-              todoList.removeChild(newTodo);
-            });
+          tambahTask(inputText);
+          input.value = "";
         }
       });
+
+      function tambahTask(inputText) {
+        const todoList = document.getElementById("todo-list");
+
+        const newTodo = document.createElement("li");
+        newTodo.className = "list-group-item todo-item";
+
+        newTodo.innerHTML = `
+          <span>${inputText}</span>
+          <div class="priority-buttons">
+            <button class="btn btn-success btn-sm up-btn">⬆️</button>
+            <button class="btn btn-info btn-sm down-btn">⬇️</button>
+            <button class="btn btn-danger btn-sm delete-btn">🗑️</button>
+          </div>
+        `;
+
+        todoList.appendChild(newTodo);
+
+        setupTaskButtons(newTodo);
+      }
+
+      // Up and Down Function
+      function setupTaskButtons(taskItem) {
+        const todoList = document.getElementById("todo-list");
+
+        // Move up
+        taskItem
+          .querySelector(".up-btn")
+          .addEventListener("click", function () {
+            const prevTask = taskItem.previousElementSibling;
+            if (prevTask) {
+              todoList.insertBefore(taskItem, prevTask);
+            }
+          });
+
+        // Move down
+        taskItem
+          .querySelector(".down-btn")
+          .addEventListener("click", function () {
+            const nextTask = taskItem.nextElementSibling;
+            if (nextTask) {
+              todoList.insertBefore(nextTask, taskItem);
+            }
+          });
+
+        // Delete
+        taskItem
+          .querySelector(".delete-btn")
+          .addEventListener("click", function () {
+            todoList.removeChild(taskItem);
+          });
+      }
     </script>
   </body>
 </html>

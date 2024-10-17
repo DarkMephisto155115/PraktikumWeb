@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculator</title>
+    <title>Mathematical Malignant Annihilate</title>
 
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -15,24 +15,34 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #ffffff;
+        background-color: #1a1a1a;
+        font-family: "Roboto", sans-serif;
       }
+
       .calculator {
-        width: 250px;
+        width: 100%;
+        max-width: 400px;
         padding: 20px;
         border-radius: 15px;
-        background: #2b2b3a;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(145deg, #0b0b0b, #1a1a1a);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 0, 0, 0.2);
       }
+
       .calculator .display {
         height: 80px;
-        background: #121224;
-        color: white;
+        background: linear-gradient(145deg, #1a1a1a, #2e2e2e);
+        color: #ff1c1c; /* Blood red text */
         text-align: right;
         padding: 20px;
-        font-size: 2.5em;
+        font-size: 2.2em;
         border-radius: 10px;
+        box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.4);
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
       }
+
       .calculator button {
         width: 60px;
         height: 60px;
@@ -40,51 +50,85 @@
         margin: 5px;
         border: none;
         border-radius: 10px;
-        background-color: #6a5acd;
+        background: linear-gradient(145deg, #252525, #3a3a3a);
         color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
       }
+
+      .calculator button:hover {
+        background: linear-gradient(145deg, #363636, #4c4c4c);
+        box-shadow: 0 8px 15px rgba(255, 0, 0, 0.25);
+      }
+
       .calculator button:active {
-        background-color: #8a79ff;
+        background: #3a3a3a;
+        box-shadow: inset 0 2px 5px rgba(255, 0, 0, 0.5);
       }
-      .calculator button.operation {
-        background-color: #9065d3;
+
+      .calculator button.operasi {
+        background: linear-gradient(145deg, #6d0000, #900000); /* Dark red */
+      }
+
+      .calculator button.operasi:hover {
+        background: linear-gradient(
+          145deg,
+          #a30000,
+          #b50000
+        ); /* Brighter red on hover */
+        box-shadow: 0 8px 15px rgba(255, 0, 0, 0.5);
+      }
+
+      .btn-group-vertical {
+        width: 100%;
+      }
+
+      @media screen and (min-width: 768px) {
+        .calculator {
+          max-width: 500px;
+        }
+
+        .calculator .display {
+          font-size: 2.5em;
+        }
       }
     </style>
   </head>
   <body>
     <div class="calculator text-center">
+      <h1 style="color: red">Mathematical Malignant Annihilation</h1>
       <div class="display">
-        <span id="previousValue"></span>
-        <span id="operatorDisplay"></span>
-        <span id="currentValue">0</span>
+        <span id="value2"></span>
+        <span id="displayOperator"></span>
+        <span id="value1">0</span>
       </div>
       <div class="btn-group-vertical w-100">
         <div class="btn-group d-flex">
-          <button class="btn" onclick="clearDisplay()">AC</button>
-          <button class="btn" onclick="inputSymbol('÷')">÷</button>
-          <button class="btn" onclick="inputSymbol('%')">%</button>
-          <button class="btn operation" onclick="inputSymbol('+')">+</button>
+          <button class="btn" onclick="reset()">AC</button>
+          <button class="btn" onclick="inputOperasi('÷')">÷</button>
+          <button class="btn" onclick="inputOperasi('%')">%</button>
+          <button class="btn operasi" onclick="inputOperasi('+')">+</button>
         </div>
         <div class="btn-group d-flex">
-          <button class="btn" onclick="inputDigit(7)">7</button>
-          <button class="btn" onclick="inputDigit(8)">8</button>
-          <button class="btn" onclick="inputDigit(9)">9</button>
-          <button class="btn operation" onclick="inputSymbol('-')">-</button>
+          <button class="btn" onclick="inputAngka(7)">7</button>
+          <button class="btn" onclick="inputAngka(8)">8</button>
+          <button class="btn" onclick="inputAngka(9)">9</button>
+          <button class="btn operasi" onclick="inputOperasi('-')">-</button>
         </div>
         <div class="btn-group d-flex">
-          <button class="btn" onclick="inputDigit(4)">4</button>
-          <button class="btn" onclick="inputDigit(5)">5</button>
-          <button class="btn" onclick="inputDigit(6)">6</button>
-          <button class="btn operation" onclick="inputSymbol('×')">×</button>
+          <button class="btn" onclick="inputAngka(4)">4</button>
+          <button class="btn" onclick="inputAngka(5)">5</button>
+          <button class="btn" onclick="inputAngka(6)">6</button>
+          <button class="btn operasi" onclick="inputOperasi('×')">×</button>
         </div>
         <div class="btn-group d-flex">
-          <button class="btn" onclick="inputDigit(1)">1</button>
-          <button class="btn" onclick="inputDigit(2)">2</button>
-          <button class="btn" onclick="inputDigit(3)">3</button>
-          <button class="btn operation" onclick="calculate()">=</button>
+          <button class="btn" onclick="inputAngka(1)">1</button>
+          <button class="btn" onclick="inputAngka(2)">2</button>
+          <button class="btn" onclick="inputAngka(3)">3</button>
+          <button class="btn operasi" onclick="Kalkulasi()">=</button>
         </div>
         <div class="btn-group d-flex">
-          <button class="btn" onclick="inputDigit(0)" style="flex-grow: 2">
+          <button class="btn" onclick="inputAngka(0)" style="flex-grow: 2">
             0
           </button>
         </div>
@@ -95,39 +139,38 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Custom JavaScript -->
     <script>
-      let previousValueDisplay = document.getElementById("previousValue");
-      let operatorDisplay = document.getElementById("operatorDisplay");
-      let currentValueDisplay = document.getElementById("currentValue");
+      let displayValue1 = document.getElementById("value1");
+      let displayOperator = document.getElementById("displayOperator");
+      let displayValue2 = document.getElementById("value2");
 
-      let currentInput = "0";
+      let input1 = "0";
       let operator = null;
-      let previousInput = null;
+      let input2 = null;
 
-      function clearDisplay() {
-        currentInput = "0";
+      function reset() {
+        input1 = "0";
         operator = null;
-        previousInput = null;
-        updateDisplay();
+        input2 = null;
+        update();
       }
 
-      function updateDisplay() {
-        previousValueDisplay.textContent = previousInput ? previousInput : "";
-        operatorDisplay.textContent = operator ? ` ${operator} ` : "";
-        currentValueDisplay.textContent = currentInput;
+      function update() {
+        displayValue2.textContent = input2 ? input2 : "";
+        displayOperator.textContent = operator ? ` ${operator} ` : "";
+        displayValue1.textContent = input1;
       }
 
-      function inputDigit(digit) {
-        if (currentInput === "0") {
-          currentInput = String(digit);
+      function inputAngka(digit) {
+        if (input1 === "0") {
+          input1 = String(digit);
         } else {
-          currentInput += String(digit);
+          input1 += String(digit);
         }
-        updateDisplay();
+        update();
       }
 
-      function inputSymbol(symbol) {
+      function inputOperasi(symbol) {
         if (symbol === "÷") {
           symbol = "/";
         } else if (symbol === "×") {
@@ -135,20 +178,31 @@
         }
 
         if (operator === null) {
-          previousInput = currentInput;
-          currentInput = "0";
+          input2 = input1;
+          input1 = "0";
         }
 
         operator = symbol;
-        updateDisplay();
+        update();
       }
 
-      function calculate() {
-        if (operator !== null && previousInput !== null) {
-          currentInput = String(eval(previousInput + operator + currentInput));
+      function Kalkulasi() {
+        if (operator === null || input2 === null) {
+          alert("Masukkan operasi yang valid");
+          return;
+        }
+
+        if (operator === "/" && input1 === "0") {
+          alert("Error: Pembagian dengan 0");
+          reset();
+          return;
+        }
+
+        if (operator !== null && input2 !== null) {
+          input1 = String(eval(input2 + operator + input1));
           operator = null;
-          previousInput = null;
-          updateDisplay();
+          input2 = null;
+          update();
         }
       }
     </script>
