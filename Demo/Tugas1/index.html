@@ -131,6 +131,9 @@
           <button class="btn" onclick="inputAngka(0)" style="flex-grow: 2">
             0
           </button>
+          <button class="btn" onclick="inputOperasi('^')" style="flex-grow: 2">
+            ^
+          </button>
         </div>
       </div>
     </div>
@@ -157,7 +160,12 @@
 
       function update() {
         displayValue2.textContent = input2 ? input2 : "";
-        displayOperator.textContent = operator ? ` ${operator} ` : "";
+        if (operator === "**"){
+          displayOperator.textContent = operator ? ` ^ ` : "";
+        }else{
+          displayOperator.textContent = operator ? ` ${operator} ` : "";
+        }
+
         displayValue1.textContent = input1;
       }
 
@@ -175,6 +183,8 @@
           symbol = "/";
         } else if (symbol === "×") {
           symbol = "*";
+        }else if(symbol === "^"){
+          symbol = "**";
         }
 
         if (operator === null) {
