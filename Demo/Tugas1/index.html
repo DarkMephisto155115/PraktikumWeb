@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mathematical Malignant Annihilate</title>
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #1a1a1a;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .calculator {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        border-radius: 15px;
+        background: linear-gradient(145deg, #0b0b0b, #1a1a1a);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 0, 0, 0.2);
+      }
+
+      .calculator .display {
+        height: 80px;
+        background: linear-gradient(145deg, #1a1a1a, #2e2e2e);
+        color: #ff1c1c;
+        text-align: right;
+        padding: 20px;
+        font-size: 2.2em;
+        border-radius: 10px;
+        box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.4);
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+      }
+
+      .calculator button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5em;
+        margin: 5px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(145deg, #252525, #3a3a3a);
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+      }
+
+      .calculator button:hover {
+        background: linear-gradient(145deg, #363636, #4c4c4c);
+        box-shadow: 0 8px 15px rgba(255, 0, 0, 0.25);
+      }
+
+      .calculator button:active {
+        background: #3a3a3a;
+        box-shadow: inset 0 2px 5px rgba(255, 0, 0, 0.5);
+      }
+
+      .calculator button.operasi {
+        background: linear-gradient(145deg, #6d0000, #900000);
+      }
+
+      .calculator button.operasi:hover {
+        background: linear-gradient(145deg, #a30000, #b50000);
+        box-shadow: 0 8px 15px rgba(255, 0, 0, 0.5);
+      }
+
+      .btn-group-vertical {
+        width: 100%;
+      }
+
+      @media screen and (min-width: 768px) {
+        .calculator {
+          max-width: 500px;
+        }
+
+        .calculator .display {
+          font-size: 2.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator text-center">
+      <h1 style="color: red">Mathematical Malignant Annihilation</h1>
+      <div class="display">
+        <span id="value2"></span>
+        <span id="displayOperator"></span>
+        <span id="value1">0</span>
+      </div>
+      <div class="btn-group-vertical w-100">
+        <div class="btn-group d-flex">
+          <button class="btn" onclick="reset()">AC</button>
+          <button class="btn" onclick="inputOperasi('÷')">÷</button>
+          <button class="btn" onclick="inputOperasi('%')">%</button>
+          <button class="btn operasi" onclick="inputOperasi('+')">+</button>
+        </div>
+        <div class="btn-group d-flex">
+          <button class="btn" onclick="inputAngka(7)">7</button>
+          <button class="btn" onclick="inputAngka(8)">8</button>
+          <button class="btn" onclick="inputAngka(9)">9</button>
+          <button class="btn operasi" onclick="inputOperasi('-')">-</button>
+        </div>
+        <div class="btn-group d-flex">
+          <button class="btn" onclick="inputAngka(4)">4</button>
+          <button class="btn" onclick="inputAngka(5)">5</button>
+          <button class="btn" onclick="inputAngka(6)">6</button>
+          <button class="btn operasi" onclick="inputOperasi('×')">×</button>
+        </div>
+        <div class="btn-group d-flex">
+          <button class="btn" onclick="inputAngka(1)">1</button>
+          <button class="btn" onclick="inputAngka(2)">2</button>
+          <button class="btn" onclick="inputAngka(3)">3</button>
+          <button class="btn operasi" onclick="Kalkulasi()">=</button>
+        </div>
+        <div class="btn-group d-flex">
+          <button class="btn" onclick="inputAngka(0)" style="flex-grow: 2">
+            0
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      let displayValue1 = document.getElementById("value1");
+      let displayOperator = document.getElementById("displayOperator");
+      let displayValue2 = document.getElementById("value2");
+
+      let input1 = "0";
+      let operator = null;
+      let input2 = null;
+
+      function reset() {
+        input1 = "0";
+        operator = null;
+        input2 = null;
+        update();
+      }
+
+      function update() {
+        displayValue2.textContent = input2 ? input2 : "";
+        displayOperator.textContent = operator ? ` ${operator} ` : "";
+        displayValue1.textContent = input1;
+      }
+
+      function inputAngka(digit) {
+        if (input1 === "0") {
+          input1 = String(digit);
+        } else {
+          input1 += String(digit);
+        }
+        update();
+      }
+
+      function inputOperasi(symbol) {
+        if (symbol === "÷") {
+          symbol = "/";
+        } else if (symbol === "×") {
+          symbol = "*";
+        }
+
+        if (operator === null) {
+          input2 = input1;
+          input1 = "0";
+        }
+
+        operator = symbol;
+        update();
+      }
+
+      function Kalkulasi() {
+        if (operator === null || input2 === null) {
+          alert("Masukkan operasi yang valid");
+          return;
+        }
+
+        if (operator === "/" && input1 === "0") {
+          alert("Error: Pembagian dengan 0");
+          reset();
+          return;
+        }
+
+        if (operator !== null && input2 !== null) {
+          input1 = String(eval(input2 + operator + input1));
+          operator = null;
+          input2 = null;
+          update();
+        }
+      }
+    </script>
+  </body>
+</html>
