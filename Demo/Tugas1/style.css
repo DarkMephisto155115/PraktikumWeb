@@ -1,0 +1,169 @@
+body {
+    font-family: "Anuphan", sans-serif !important;
+    background-color: #1a1a1a;
+
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--before-bg);
+    background-size: cover;
+    z-index: -1;
+    transition: background 0.4s ease-in-out;
+}
+
+
+h1 {
+    font-size: 30px !important;
+}
+
+.choose-game {
+    font-size: 18px !important;
+}
+
+.slogan {
+    font-size: 18px !important;
+}
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    padding: 10px 20px;
+}
+
+
+.navbar.transparent {
+    background-color: transparent !important;
+    box-shadow: none;
+}
+
+
+.navbar.scrolled {
+    background-color: rgba(28, 29, 33, 1) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    transition: font-size 0.3s ease;
+}
+
+.navbar.scrolled .navbar-brand {
+    font-size: 1rem;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    transition: font-size 0.3s ease;
+}
+
+.navbar.scrolled .navbar-nav .nav-link {
+    font-size: 1rem;
+}
+
+.navbar img {
+    width: 60px;
+    height: 60px;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 80px 0;
+    margin-top: 80px;
+}
+
+.game-card {
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+.game-card img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.game-card:hover img {
+    transform: scale(1.1);
+}
+
+.feature-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(180deg, rgba(0, 158, 236, 0.05) 15%, rgba(0, 158, 236, 0) 60%), #2c2d33;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    height: 250px;
+}
+
+.feature-card:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.icon-blue {
+    color: #3498db;
+    margin-bottom: 15px;
+    width: 36px;
+    height: 36px;
+}
+
+.icon-red {
+    color: #ed343e;
+    margin-bottom: 15px;
+    width: 36px;
+    height: 36px;
+}
+
+.icon-purple {
+    color: rgb(179, 55, 179);
+    margin-bottom: 15px;
+    width: 36px;
+    height: 36px;
+}
+
+.card-title {
+    font-weight: 700;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.card-text {
+    text-align: center;
+}
+
+
+.card-text {
+    color: #bdbdbd;
+}
+
+
+
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+    color: white;
+}
+
+footer a {
+    text-decoration: none;
+}

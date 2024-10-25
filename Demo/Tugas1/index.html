@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="asset/terra_brain_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TERRA-BRAIN</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <img style="width: 100px; height: 100px; margin-right: 10px;" src="/Demo/Tugas1/TugasWeb/asset/terra_brain_logo.png"
+        alt="TERRA-BRAIN Logo" />
+      <a class="navbar-brand" href="#">TERRA-BRAIN</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#game-list">Game List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about-us">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#our-service">Our Services</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-3">
+          <li class="nav-item">
+            <a class="nav-link" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="hero-section">
+    <div class="container">
+      <h1 style="font-weight: 700; margin-bottom: 50px; color: white;" class="display-4">
+        The best source of guides for your favorite games
+      </h1>
+      <p style="color: white" class="slogan">
+        TERRA-BRAIN provides news, tier lists, and detailed guides for all of
+        your gacha games. Everything you need is in one place!
+      </p>
+      <p class="choose-game" style="opacity: 0.3">Choose a game</p>
+    </div>
+    <div style="color: white;"><svg id="arrowDown" aria-hidden="true" focusable="false" data-prefix="fas"
+        data-icon="arrow-down-long" class="svg-inline--fa fa-arrow-down-long" role="img"
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="18" style="opacity: 0.3">
+        <path fill="currentColor"
+          d="M9.375 329.4c12.51-12.51 32.76-12.49 45.25 0L128 402.8V32c0-17.69 14.31-32 32-32s32 14.31 32 32v370.8l73.38-73.38c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-128 128c-12.5 12.5-32.75 12.5-45.25 0l-128-128C-3.125 362.1-3.125 341.9 9.375 329.4z">
+        </path>
+      </svg></div>
+  </div>
+  <div class="container mt-5">
+    <h2 style="font-weight: 700; color: white" class="text-center mb-4">Popular Games</h2>
+    <div class="row">
+      <div class="col-md-3 mb-4">
+        <div class="reverse">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_reverse.webp" alt="Reverse 1999" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Reverse 1999</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="honkai">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_hsr.webp" alt="Honkai: Star Rail" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Honkai: Star Rail</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="wuwa">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_ww.webp" alt="Wuthering Waves" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Wuthering Waves</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="zzz">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_zzz.webp" alt="Zenless Zone Zero" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Zenless Zone Zero</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="all-games">
+
+  </div>
+
+  <!-- All Games Section -->
+  <div style="margin-bottom: 100px" class="container mt-5">
+    <h2 class="text-center mb-4" style="color: white;">All Games</h2>
+    <div class="row">
+      <div class="col-md-3 mb-4">
+        <div class="limbus">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_limbus.webp" alt="Game 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Limbus Company</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="zzz">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_zzz.webp" alt="Game 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Zenless Zone Zero</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="wuwa">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_ww.webp" alt="Game 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Wuthering Waves</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="honkai">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_hsr.webp" alt="Game 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Honkai: Star Rail</h5>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="reverse">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_reverse.webp" alt="Game 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Reverse 1999</h5>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="nikke">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_nikke.webp" alt="Game 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Goddes of Victory: NIKKE</h5>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="afk">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_afk.webp" alt="Game 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title">AFK Journey</h5>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="es">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_es.webp" alt="Game 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Ash Echoes</h5>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="tog">
+          <div class="card game-card bg-dark text-white">
+            <img src="asset/card/cover_tog.webp" alt="Game 1" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Tower of God: New World</h5>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- About us-->
+  <div class="container mt-5 mb-5" id="about-us">
+    <h2 class="text-center mb-4" style="font-weight: 700; font-size: 2.5rem; color: #ffffff;">About Us</h2>
+    <p class="text-center" style="font-size: 1.2rem; color: #ffffff;">
+      Welcome to <span style="font-weight: bold; color: #ed343e;">TERRA-BRAIN</span>, your ultimate companion for
+      mastering gacha games!
+      Whether you’re a beginner just stepping into the world of gacha or a seasoned player striving for optimization,
+      we’re here to help you every step of the way.
+      At <span style="font-weight: bold; color: #ed343e;">TERRA-BRAIN</span>, we offer a comprehensive suite of
+      resources designed to enhance your gameplay and help you make the best choices.
+    </p>
+  </div>
+
+  <!-- Who We Are-->
+  <div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4" style="font-weight: 700; font-size: 2.5rem; color: #ffffff;">Our Members</h2>
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3 mb-4">
+        <div class="card feature-card bg-dark text-white">
+          <div class="card-body text-center">
+            <img src="/Demo/Tugas1/TugasWeb/asset/Emblem_ACVI_C4-621_Raven.jpg" alt="" class="img-fluid"
+              style="width: auto; height: auto; max-width: 100px;">
+            <h5 class="card-title">Supreme Administrator</h5>
+            <p class="card-text">Our great leader, the creator of TERRA-BRAIN</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 mb-4">
+        <div class="card feature-card bg-dark text-white">
+          <div class="card-body text-center">
+            <img src="/Demo/Tugas1/TugasWeb/asset/Emblem_ACVI_Overseer.webp" alt="" class="img-fluid"
+              style="width: auto; height: auto; max-width: 100px;">
+            <h5 class="card-title">Senior Administrator</h5>
+            <p class="card-text">Supreme Administrator Second in command</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 mb-4">
+        <div class="card feature-card bg-dark text-white">
+          <div class="card-body text-center">
+            <img src="/Demo/Tugas1/TugasWeb/asset/Emblem_ACVI_RaD.webp" alt="" class="img-fluid"
+              style="width: auto; height: auto; max-width: 100px;">
+            <h5 class="card-title">Tier Lists and Meta Analysis Team</h5>
+            <p class="card-text">Our professional team of analysis</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 mb-4">
+        <div class="card feature-card bg-dark text-white">
+          <div class="card-body text-center">
+            <img src="/Demo/Tugas1/TugasWeb/asset/Vespers_Emblem.PNG.webp" alt="" class="img-fluid"
+              style="width: auto; height: auto; max-width: 100px;">
+            <h5 class="card-title">All of Discord Members</h5>
+            <p class="card-text">All of our members that give feedback</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Our Service-->
+  <div class="container mt-5 mb-5" id="our-service">
+    <h2 class="text-center mb-4" style="font-weight: 700; color: white;">Our Website Service</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card feature-card bg-dark text-white mt-4">
+          <div class="card-body text-center">
+            <div class="icon-blue mb-3">
+              <!-- Replace this with a proper icon -->
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="book-open"
+                class="svg-inline--fa fa-book-open " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                width="36">
+                <path fill="currentColor"
+                  d="M144.3 32.04C106.9 31.29 63.7 41.44 18.6 61.29c-11.42 5.026-18.6 16.67-18.6 29.15l0 357.6c0 11.55 11.99 19.55 22.45 14.65c126.3-59.14 219.8 11 223.8 14.01C249.1 478.9 252.5 480 256 480c12.4 0 16-11.38 16-15.98V80.04c0-5.203-2.531-10.08-6.781-13.08C263.3 65.58 216.7 33.35 144.3 32.04zM557.4 61.29c-45.11-19.79-88.48-29.61-125.7-29.26c-72.44 1.312-118.1 33.55-120.9 34.92C306.5 69.96 304 74.83 304 80.04v383.1C304 468.4 307.5 480 320 480c3.484 0 6.938-1.125 9.781-3.328c3.925-3.018 97.44-73.16 223.8-14c10.46 4.896 22.45-3.105 22.45-14.65l.0001-357.6C575.1 77.97 568.8 66.31 557.4 61.29z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">Beginner and advanced guides</h5>
+            <p class="card-text">Knowledge is power and we teach you what to do (or what not to do) to gain an advantage
+              over other players.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card feature-card bg-dark text-white mt-4">
+          <div class="card-body text-center">
+            <div class="icon-purple mb-3">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-group"
+                class="svg-inline--fa fa-user-group " role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 512" width="36">
+                <path fill="currentColor"
+                  d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3c-95.73 0-173.3 77.6-173.3 173.3C0 496.5 15.52 512 34.66 512H413.3C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM479.1 320h-73.85C451.2 357.7 480 414.1 480 477.3C480 490.1 476.2 501.9 470 512h138C625.7 512 640 497.6 640 479.1C640 391.6 568.4 320 479.1 320zM432 256C493.9 256 544 205.9 544 144S493.9 32 432 32c-25.11 0-48.04 8.555-66.72 22.51C376.8 76.63 384 101.4 384 128c0 35.52-11.93 68.14-31.59 94.71C372.7 243.2 400.8 256 432 256z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">Character reviews</h5>
+            <p class="card-text">Games revolve around collecting characters, and we help you use them in an optimal way.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card feature-card bg-dark text-white mt-4">
+          <div class="card-body text-center">
+            <div class="icon-red mb-3">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="ranking-star"
+                class="svg-inline--fa fa-ranking-star " role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 512" width="36">
+                <path fill="currentColor"
+                  d="M406.1 61.65C415.4 63.09 419.4 74.59 412.6 81.41L374.6 118.1L383.6 170.1C384.1 179.5 375.3 186.7 366.7 182.4L320.2 157.9L273.3 182.7C264.7 187 255 179.8 256.4 170.5L265.4 118.4L227.4 81.41C220.6 74.59 224.6 63.09 233.9 61.65L286.2 54.11L309.8 6.332C314.1-2.289 326.3-1.93 330.2 6.332L353.8 54.11L406.1 61.65zM384 256C401.7 256 416 270.3 416 288V480C416 497.7 401.7 512 384 512H256C238.3 512 224 497.7 224 480V288C224 270.3 238.3 256 256 256H384zM160 320C177.7 320 192 334.3 192 352V480C192 497.7 177.7 512 160 512H32C14.33 512 0 497.7 0 480V352C0 334.3 14.33 320 32 320H160zM448 416C448 398.3 462.3 384 480 384H608C625.7 384 640 398.3 640 416V480C640 497.7 625.7 512 608 512H480C462.3 512 448 497.7 448 480V416z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">Tier lists and meta analysis</h5>
+            <p class="card-text">Whether you're a meta player or a collector, tier lists make everything easier.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card feature-card bg-dark text-white mt-4">
+          <div class="card-body text-center">
+            <div class="icon-red mb-3">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper"
+                class="svg-inline--fa fa-newspaper " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                width="36">
+                <path fill="currentColor"
+                  d="M480 32H128C110.3 32 96 46.33 96 64v336C96 408.8 88.84 416 80 416S64 408.8 64 400V96H32C14.33 96 0 110.3 0 128v288c0 35.35 28.65 64 64 64h384c35.35 0 64-28.65 64-64V64C512 46.33 497.7 32 480 32zM272 416h-96C167.2 416 160 408.8 160 400C160 391.2 167.2 384 176 384h96c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 320h-96C167.2 320 160 312.8 160 304C160 295.2 167.2 288 176 288h96C280.8 288 288 295.2 288 304C288 312.8 280.8 320 272 320zM432 416h-96c-8.836 0-16-7.164-16-16c0-8.838 7.164-16 16-16h96c8.836 0 16 7.162 16 16C448 408.8 440.8 416 432 416zM432 320h-96C327.2 320 320 312.8 320 304C320 295.2 327.2 288 336 288h96C440.8 288 448 295.2 448 304C448 312.8 440.8 320 432 320zM448 208C448 216.8 440.8 224 432 224h-256C167.2 224 160 216.8 160 208v-96C160 103.2 167.2 96 176 96h256C440.8 96 448 103.2 448 112V208z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">News and updates</h5>
+            <p class="card-text">Stay up-to-date with any patch notes, new content, or other important updates.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card feature-card bg-dark text-white mt-4">
+          <div class="card-body text-center">
+            <div class="icon-purple mb-3">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="list-ol"
+                class="svg-inline--fa fa-list-ol " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                width="36">
+                <path fill="currentColor"
+                  d="M55.1 56.04C55.1 42.78 66.74 32.04 79.1 32.04H111.1C125.3 32.04 135.1 42.78 135.1 56.04V176H151.1C165.3 176 175.1 186.8 175.1 200C175.1 213.3 165.3 224 151.1 224H71.1C58.74 224 47.1 213.3 47.1 200C47.1 186.8 58.74 176 71.1 176H87.1V80.04H79.1C66.74 80.04 55.1 69.29 55.1 56.04V56.04zM118.7 341.2C112.1 333.8 100.4 334.3 94.65 342.4L83.53 357.9C75.83 368.7 60.84 371.2 50.05 363.5C39.26 355.8 36.77 340.8 44.47 330.1L55.59 314.5C79.33 281.2 127.9 278.8 154.8 309.6C176.1 333.1 175.6 370.5 153.7 394.3L118.8 432H152C165.3 432 176 442.7 176 456C176 469.3 165.3 480 152 480H64C54.47 480 45.84 474.4 42.02 465.6C38.19 456.9 39.9 446.7 46.36 439.7L118.4 361.7C123.7 355.9 123.8 347.1 118.7 341.2L118.7 341.2zM512 64C529.7 64 544 78.33 544 96C544 113.7 529.7 128 512 128H256C238.3 128 224 113.7 224 96C224 78.33 238.3 64 256 64H512zM512 224C529.7 224 544 238.3 544 256C544 273.7 529.7 288 512 288H256C238.3 288 224 273.7 224 256C224 238.3 238.3 224 256 224H512zM512 384C529.7 384 544 398.3 544 416C544 433.7 529.7 448 512 448H256C238.3 448 224 433.7 224 416C224 398.3 238.3 384 256 384H512z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">Stats and data</h5>
+            <p class="card-text">We gather lots of stats and data about characters to optimize your gameplay.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card feature-card bg-dark text-white mt-4">
+          <div class="card-body text-center">
+            <div class="icon-blue mb-3">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="calculator"
+                class="svg-inline--fa fa-calculator " role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 384 512" width="36">
+                <path fill="currentColor"
+                  d="M336 0h-288C22.38 0 0 22.38 0 48v416C0 489.6 22.38 512 48 512h288c25.62 0 48-22.38 48-48v-416C384 22.38 361.6 0 336 0zM64 208C64 199.2 71.2 192 80 192h32C120.8 192 128 199.2 128 208v32C128 248.8 120.8 256 112 256h-32C71.2 256 64 248.8 64 240V208zM64 304C64 295.2 71.2 288 80 288h32C120.8 288 128 295.2 128 304v32C128 344.8 120.8 352 112 352h-32C71.2 352 64 344.8 64 336V304zM224 432c0 8.801-7.199 16-16 16h-128C71.2 448 64 440.8 64 432v-32C64 391.2 71.2 384 80 384h128c8.801 0 16 7.199 16 16V432zM224 336c0 8.801-7.199 16-16 16h-32C167.2 352 160 344.8 160 336v-32C160 295.2 167.2 288 176 288h32C216.8 288 224 295.2 224 304V336zM224 240C224 248.8 216.8 256 208 256h-32C167.2 256 160 248.8 160 240v-32C160 199.2 167.2 192 176 192h32C216.8 192 224 199.2 224 208V240zM320 432c0 8.801-7.199 16-16 16h-32c-8.799 0-16-7.199-16-16v-32c0-8.801 7.201-16 16-16h32c8.801 0 16 7.199 16 16V432zM320 336c0 8.801-7.199 16-16 16h-32c-8.799 0-16-7.199-16-16v-32C256 295.2 263.2 288 272 288h32C312.8 288 320 295.2 320 304V336zM320 240C320 248.8 312.8 256 304 256h-32C263.2 256 256 248.8 256 240v-32C256 199.2 263.2 192 272 192h32C312.8 192 320 199.2 320 208V240zM320 144C320 152.8 312.8 160 304 160h-224C71.2 160 64 152.8 64 144v-64C64 71.2 71.2 64 80 64h224C312.8 64 320 71.2 320 80V144z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">Tools and calculators</h5>
+            <p class="card-text">Our tools let you test and simulate strategies without wasting resources in-game.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our Member -->
+  <div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4" style="font-weight: 700; font-size: 2.5rem; color: #ffffff;">Our Numbers</h2>
+    <div class="row">
+      <div class="col-sm-6 col-md-3 mb-4">
+        <div class="card feature-card bg-dark text-white">
+          <div class="card-body text-center">
+            <div class="icon-blue mb-3">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="users"
+                class="svg-inline--fa fa-users " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                width="36">
+                <path fill="currentColor"
+                  d="M319.9 320c57.41 0 103.1-46.56 103.1-104c0-57.44-46.54-104-103.1-104c-57.41 0-103.1 46.56-103.1 104C215.9 273.4 262.5 320 319.9 320zM369.9 352H270.1C191.6 352 128 411.7 128 485.3C128 500.1 140.7 512 156.4 512h327.2C499.3 512 512 500.1 512 485.3C512 411.7 448.4 352 369.9 352zM512 160c44.18 0 80-35.82 80-80S556.2 0 512 0c-44.18 0-80 35.82-80 80S467.8 160 512 160zM183.9 216c0-5.449 .9824-10.63 1.609-15.91C174.6 194.1 162.6 192 149.9 192H88.08C39.44 192 0 233.8 0 285.3C0 295.6 7.887 304 17.62 304h199.5C196.7 280.2 183.9 249.7 183.9 216zM128 160c44.18 0 80-35.82 80-80S172.2 0 128 0C83.82 0 48 35.82 48 80S83.82 160 128 160zM551.9 192h-61.84c-12.8 0-24.88 3.037-35.86 8.24C454.8 205.5 455.8 210.6 455.8 216c0 33.71-12.78 64.21-33.16 88h199.7C632.1 304 640 295.6 640 285.3C640 233.8 600.6 192 551.9 192z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">800 000+</h5>
+            <p class="card-text">Unique visitors each month.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 mb-4">
+        <div class="card feature-card bg-dark text-white">
+          <div class="card-body text-center">
+            <div class="icon-purple mb-3">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rotate"
+                class="svg-inline--fa fa-rotate " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                width="36">
+                <path fill="currentColor"
+                  d="M449.9 39.96l-48.5 48.53C362.5 53.19 311.4 32 256 32C161.5 32 78.59 92.34 49.58 182.2c-5.438 16.81 3.797 34.88 20.61 40.28c16.97 5.5 34.86-3.812 40.3-20.59C130.9 138.5 189.4 96 256 96c37.96 0 73 14.18 100.2 37.8L311.1 178C295.1 194.8 306.8 223.4 330.4 224h146.9C487.7 223.7 496 215.3 496 204.9V59.04C496 34.99 466.9 22.95 449.9 39.96zM441.8 289.6c-16.94-5.438-34.88 3.812-40.3 20.59C381.1 373.5 322.6 416 256 416c-37.96 0-73-14.18-100.2-37.8L200 334C216.9 317.2 205.2 288.6 181.6 288H34.66C24.32 288.3 16 296.7 16 307.1v145.9c0 24.04 29.07 36.08 46.07 19.07l48.5-48.53C149.5 458.8 200.6 480 255.1 480c94.45 0 177.4-60.34 206.4-150.2C467.9 313 458.6 294.1 441.8 289.6z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">25 000 000+</h5>
+            <p class="card-text">Page views generated every month.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 mb-4">
+        <div class="card feature-card bg-dark text-white">
+          <div class="card-body text-center">
+            <div class="icon-red mb-3">
+              <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="discord"
+                class="svg-inline--fa fa-discord " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                width="36">
+                <path fill="currentColor"
+                  d="M524.5 69.84a1.5 1.5 0 0 0 -.764-.7A485.1 485.1 0 0 0 404.1 32.03a1.816 1.816 0 0 0 -1.923 .91 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.14-30.6 1.89 1.89 0 0 0 -1.924-.91A483.7 483.7 0 0 0 116.1 69.14a1.712 1.712 0 0 0 -.788 .676C39.07 183.7 18.19 294.7 28.43 404.4a2.016 2.016 0 0 0 .765 1.375A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.1 430.4a1.86 1.86 0 0 0 -1.019-2.588 321.2 321.2 0 0 1 -45.87-21.85 1.885 1.885 0 0 1 -.185-3.126c3.082-2.309 6.166-4.711 9.109-7.137a1.819 1.819 0 0 1 1.9-.256c96.23 43.92 200.4 43.92 295.5 0a1.812 1.812 0 0 1 1.924 .233c2.944 2.426 6.027 4.851 9.132 7.16a1.884 1.884 0 0 1 -.162 3.126 301.4 301.4 0 0 1 -45.89 21.83 1.875 1.875 0 0 0 -1 2.611 391.1 391.1 0 0 0 30.01 48.81 1.864 1.864 0 0 0 2.063 .7A486 486 0 0 0 610.7 405.7a1.882 1.882 0 0 0 .765-1.352C623.7 277.6 590.9 167.5 524.5 69.84zM222.5 337.6c-28.97 0-52.84-26.59-52.84-59.24S193.1 219.1 222.5 219.1c29.67 0 53.31 26.82 52.84 59.24C275.3 310.1 251.9 337.6 222.5 337.6zm195.4 0c-28.97 0-52.84-26.59-52.84-59.24S388.4 219.1 417.9 219.1c29.67 0 53.31 26.82 52.84 59.24C470.7 310.1 447.5 337.6 417.9 337.6z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">23 000+</h5>
+            <p class="card-text">Discord users who joined our Community.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 mb-4">
+        <div class="card feature-card bg-dark text-white">
+          <div class="card-body text-center">
+            <div class="icon-blue mb-3">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="gamepad"
+                class="svg-inline--fa fa-gamepad " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                width="36">
+                <path fill="currentColor"
+                  d="M448 64H192C85.96 64 0 149.1 0 256s85.96 192 192 192h256c106 0 192-85.96 192-192S554 64 448 64zM247.1 280h-32v32c0 13.2-10.78 24-23.98 24c-13.2 0-24.02-10.8-24.02-24v-32L136 279.1C122.8 279.1 111.1 269.2 111.1 256c0-13.2 10.85-24.01 24.05-24.01L167.1 232v-32c0-13.2 10.82-24 24.02-24c13.2 0 23.98 10.8 23.98 24v32h32c13.2 0 24.02 10.8 24.02 24C271.1 269.2 261.2 280 247.1 280zM431.1 344c-22.12 0-39.1-17.87-39.1-39.1s17.87-40 39.1-40s39.1 17.88 39.1 40S454.1 344 431.1 344zM495.1 248c-22.12 0-39.1-17.87-39.1-39.1s17.87-40 39.1-40c22.12 0 39.1 17.88 39.1 40S518.1 248 495.1 248z">
+                </path>
+              </svg>
+            </div>
+            <h5 class="card-title">9</h5>
+            <p class="card-text">Gacha games supported.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4" style="font-weight: 700; font-size: 2.5rem; color: #ffffff;">Join our community</h2>
+    <div class="row">
+      <div class="col-12 col-sm-6 mb-4">
+        <div class="card feature-card bg-dark text-white h-100">
+          <div class="card-body text-center">
+            <img src="/asset/community_discord.webp" alt="">
+            <h5 class="card-title">Meet the team on <span style="color: #009eec;">Discord </span></h5>
+            <p class="card-text">Join the ever-growing community on our Discord (over 23000 members) and meet the team!
+            </p>
+            <a style="margin-right: 20px;" role="button" tabindex="0" target="_blank" rel="noreferrer"
+              class="btn btn-primary" style="display: inline-flex; align-items: center; padding: 10px 20px;">
+              <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="discord"
+                class="svg-inline--fa fa-discord" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                width="30" height="30">
+                <path fill="currentColor"
+                  d="M524.5 69.84a1.5 1.5 0 0 0 -.764-.7A485.1 485.1 0 0 0 404.1 32.03a1.816 1.816 0 0 0 -1.923 .91 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.14-30.6 1.89 1.89 0 0 0 -1.924-.91A483.7 483.7 0 0 0 116.1 69.14a1.712 1.712 0 0 0 -.788 .676C39.07 183.7 18.19 294.7 28.43 404.4a2.016 2.016 0 0 0 .765 1.375A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.1 430.4a1.86 1.86 0 0 0 -1.019-2.588 321.2 321.2 0 0 1 -45.87-21.85 1.885 1.885 0 0 1 -.185-3.126c3.082-2.309 6.166-4.711 9.109-7.137a1.819 1.819 0 0 1 1.9-.256c96.23 43.92 200.4 43.92 295.5 0a1.812 1.812 0 0 1 1.924 .233c2.944 2.426 6.027 4.851 9.132 7.16a1.884 1.884 0 0 1 -.162 3.126 301.4 301.4 0 0 1 -45.89 21.83 1.875 1.875 0 0 0 -1 2.611 391.1 391.1 0 0 0 30.01 48.81 1.864 1.864 0 0 0 2.063 .7A486 486 0 0 0 610.7 405.7a1.882 1.882 0 0 0 .765-1.352C623.7 277.6 590.9 167.5 524.5 69.84zM222.5 337.6c-28.97 0-52.84-26.59-52.84-59.24S193.1 219.1 222.5 219.1c29.67 0 53.31 26.82 52.84 59.24C275.3 310.1 251.9 337.6 222.5 337.6zm195.4 0c-28.97 0-52.84-26.59-52.84-59.24S388.4 219.1 417.9 219.1c29.67 0 53.31 26.82 52.84 59.24C470.7 310.1 447.5 337.6 417.9 337.6z">
+                </path>
+              </svg>
+              Join our community Discord
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 mb-4">
+        <div class="card feature-card bg-dark text-white h-100">
+          <div class="card-body text-center">
+            <img src="/asset/community_patreon_alt.webp" alt="">
+            <h5 class="card-title">Support on <span style="color: #ed343e;">Ko-Fi </span> </h5>
+            <p class="card-text">If you love what we are doing and you would like to support us, you can do it via Ko-Fi
+              and gain some unique benefits in return!</p>
+            <a role="button" tabindex="0" target="_blank" rel="noreferrer" class="btn btn-danger"
+              style="background-color: red; border-color: red; display: inline-flex; align-items: center; padding: 10px 20px;">
+              <img width="30" height="20" src="/Demo/Tugas1/TugasWeb/asset/kofi.webp" alt="Ko-Fi" style="margin-right: 10px;" />
+              Support us on Ko-Fi
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Logo and Description -->
+        <div class="col-md-3">
+          <img src="asset/terra_brain_logo.png" alt="TERRA-BRAIN Logo" style="width: 60px; height: 60px" />
+          <h5 class="mt-2">TERRA-BRAIN</h5>
+          <p style="font-size: 14px">
+            TERRA-BRAIN provides news, tier lists, and detailed guides for all
+            of your gacha games. Everything you need is in one place!
+          </p>
+          <a href="#" class="text-white" style="font-size: 12px">Privacy Policy</a>
+        </div>
+        <!-- Supported Games -->
+        <div class="col-md-3">
+          <h5>Supported Games</h5>
+          <div class="row">
+            <div class="col-6">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Arknight</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Counter Side</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Honkai: Star Rail</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Limbus Company</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Reverse: 1999</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Wuthering Waves</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Zenless Zone Zero</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Goddess of Victory: NIKKE</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">AFK Journey</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Ash Echoes</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white" style="font-size: 14px">Tower of God: New World</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- TERRA-BRAIN Links -->
+        <div class="col-md-3">
+          <h5>TERRA-BRAIN</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#" class="text-white" style="font-size: 14px">Home</a>
+            </li>
+            <li>
+              <a href="#" class="text-white" style="font-size: 14px">About Us</a>
+            </li>
+            <li></li>
+            <a href="#" class="text-white" style="font-size: 14px">Our Service</a>
+            </li>
+            <li>
+              <a href="#" class="text-white" style="font-size: 14px">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Social Media -->
+        <div class="col-md-3">
+          <h5>Social Media</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#" class="text-white" style="font-size: 14px">Discord</a>
+            </li>
+            <li>
+              <a href="#" class="text-white" style="font-size: 14px">Twitter</a>
+            </li>
+            <li>
+              <a href="#" class="text-white" style="font-size: 14px">Reddit</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <p style="font-size: 12px">&copy; 2024 TERRA-BRAIN</p>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <!-- Bootstrap JS and Dependencies -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
