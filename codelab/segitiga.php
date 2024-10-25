@@ -12,4 +12,3 @@ for ($i = $baris; $i >= 1; $i--) {
     echo str_repeat(" ", $baris - $i) . str_repeat("*", 2 * $i - 1) . "\n";
 }
 
-?>
