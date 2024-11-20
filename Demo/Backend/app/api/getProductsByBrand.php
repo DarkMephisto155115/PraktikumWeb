@@ -18,8 +18,8 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 error_log("path: ". $path);
 
 // Ekstrak parameter 'brand' dari path
-if (strpos($path, "/api/allProducts/ByBrand/") === 0) {
-    $brand = str_replace("/api/allProducts/ByBrand/", "", $path);
+if (strpos($path, "/api/allProducts/byBrand/") === 0) {
+    $brand = str_replace("/api/allProducts/byBrand/", "", $path);
 } else {
     echo json_encode(["message" => "Brand parameter is required."]);
     exit;

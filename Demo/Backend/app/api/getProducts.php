@@ -21,5 +21,5 @@ if (empty($products)) {
 }
 
 
-var_dump(__DIR__);
-var_dump(class_exists('App\Config\DbConfig'));
+// var_dump(__DIR__);
+// var_dump(class_exists('App\Config\DbConfig'));
