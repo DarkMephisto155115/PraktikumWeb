@@ -3,37 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Management</title>
+    <title>TERRA-BRAIN STORE</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Product Management</h1>
+        <div class="container">
+            <div class="logo">
+                <img src="/Demo/Frontend/asset/terra_brain_logo.png" alt="">
+                <h1>TERRA-BRAIN STORE</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Catalog</a></li>
+                    <li><a href="#">Ketentuan Garansi</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+
     <main>
-        <section id="products">
-            <h2>All Products</h2>
-            <div id="product-list"></div>
+        <section class="hero">
+            <h2>The Best Computer Store</h2>
+            <p>
+                TERRA-BRAIN provides Processors, RAM, GPU, Motherboards, SSD, HDD, PSU, FAN, CASE, and many more. 
+                Everything you need is in one place!
+            </p>
         </section>
-        <section id="add-product">
-            <h2>Add Product</h2>
-            <form id="add-product-form">
-                <label>
-                    Name:
-                    <input type="text" id="product-name" required>
-                </label>
-                <label>
-                    Brand:
-                    <input type="text" id="product-brand" required>
-                </label>
-                <label>
-                    Price:
-                    <input type="number" id="product-price" required>
-                </label>
-                <button type="submit">Add Product</button>
-            </form>
+
+        <section class="products">
+            <h3>Produk Populer</h3>
+            <div class="product-grid" id="popular-products">
+                <!-- Cards for popular products go here -->
+            </div>
+
+            <h3>Produk Terbaru</h3>
+            <div class="product-grid" id="new-products">
+                <!-- Cards for new products go here -->
+            </div>
         </section>
     </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="/Demo/Frontend/asset/terra_brain_logo.png" alt="">
+                <p>TERRA-BRAIN STORE</p>
+            </div>
+            
+            <p>TERRA-BRAIN The Best Computer Shop</p>
+            <p>&copy; 2024 TERRA-BRAIN</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

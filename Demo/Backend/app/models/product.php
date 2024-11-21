@@ -32,8 +32,9 @@ class Product {
         // Jika gambar diterima dalam format base64, ubah ke binary
         $image = base64_decode($data["image"]);
     
-        $query = "INSERT INTO products (name, brand, description, price, category, stok, muchBought, image) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO products (name, category, tahun_rilis, price, stok, muchBought, image, description, brand) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
         
         $stmt = $this->conn->prepare($query);
     
