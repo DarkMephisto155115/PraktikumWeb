@@ -21,6 +21,7 @@ if (!isset($data['name']) || !isset($data['brand']) || !isset($data['description
     exit;
 }
 
+
 // Menetapkan nilai properti pada objek Product
 $product->name = $data['name'];
 $product->brand = $data['brand'];

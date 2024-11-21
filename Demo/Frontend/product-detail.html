@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - TERRA-BRAIN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 2em auto;
+        }
+
+        .product-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2em;
+        }
+
+        .product-detail img {
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        .product-info {
+            max-width: 600px;
+        }
+
+        .product-info h2 {
+            margin-bottom: 1em;
+        }
+
+        .add-to-cart {
+            margin-top: 1em;
+            padding: 0.5em 1em;
+            background-color: #1cbd1c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 1em;
+            color: #1cbd1c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Store</a>
+        <div class="product-detail">
+            <img id="product-image" src="" alt="Product Image">
+            <div class="product-info">
+                <h2 id="product-name"></h2>
+                <p><strong>Price:</strong> <span id="product-price"></span></p>
+                <p><strong>Stock:</strong> <span id="product-stock"></span></p>
+                <p id="product-description"></p>
+                <button id="add-to-cart-btn" class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get product ID from URL
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('id');
+
+        // Helper function to format the price to Indonesian Rupiah (Rp) with comma as decimal separator
+    function formatRupiah(amount) {
+        // Check if amount is a valid number
+        amount = parseFloat(amount);  // Convert to a floating point number
+        
+        if (isNaN(amount) || amount === null || amount <= 0) {
+            return "Rp 0,00";  // Return default value if invalid
+        }
+        
+        let formattedAmount = amount.toFixed(2);  // Ensure two decimal places
+        let [integerPart, decimalPart] = formattedAmount.split('.');
+    
+        // Format the integer part with periods as thousands separators
+        integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    
+        // Return the formatted price with comma as decimal separator
+        return `Rp ${integerPart},${decimalPart}`;
+    }
+
+        // Fetch product details from API
+        fetch(`http://localhost:8000/api/product/${productId}`)
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+                return response.json();
+            })
+            .then(product => {
+                document.getElementById('product-image').src = product.image ? `data:image/jpeg;base64,${product.image}` : 'placeholder.jpg';
+                document.getElementById('product-name').textContent = product.nama;
+                document.getElementById('product-price').textContent = `${formatRupiah(product.price)}`;
+                document.getElementById('product-stock').textContent = product.stok;
+                document.getElementById('product-description').textContent = product.description;
+
+                document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+                    addToCart(product.id);
+                });
+            })
+            .catch(error => console.error('Error fetching product details:', error));
+
+        function addToCart(productId) {
+            fetch(`http://localhost:8000/api/buy/${productId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+                    return response.json();
+                })
+                .then(data => {
+                    alert(`Product ${data.name} added to cart successfully!`);
+                })
+                .catch(error => console.error('Error adding to cart:', error));
+        }
+    </script>
+</body>
+
+</html>

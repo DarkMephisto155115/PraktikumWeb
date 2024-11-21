@@ -2,110 +2,109 @@
 
 namespace App\Routes;
 
+// Headers for CORS
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Handle preflight requests
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200); // Send OK status
+    http_response_code(200);
     exit;
 }
-
-// echo "Hello in routes";
-
-// echo "Current Path: " . realpath(__DIR__ . '/routes/routesApp.php') . PHP_EOL;
-// echo "Class Exists: " . (class_exists('App\Routes\RoutesApp') ? 'Yes' : 'No');
 
 class routesApp
 {
     public function handle($method, $path)
     {
-        if ($method === "GET" && $path === "/api/allProducts") {
-            include __DIR__ . "/../api/getProducts.php";
+        // POST: Fetch all products
+        if ($method === "POST" && $path === "/api/allProducts") {
+            $input = json_decode(file_get_contents('php://input'), true);
+            if (isset($input['action']) && $input['action'] === 'fetchProducts') {
+                include __DIR__ . "/../api/getProducts.php";
+                return;
+            }
+
+            $this->sendErrorResponse(400, "Invalid action");
             return;
         }
 
-        if ($method === "GET" && strpos($path, "/api/allProducts/byBrand/") == 0) {
-            $brand = str_replace("/api/productsByBrand/", "", $path);
-            error_log("Nama Brand: " . $brand);
-
-            // Pastikan 'brand' valid
+        // GET: Products by brand
+        if ($method === "GET" && preg_match("#^/api/allProducts/byBrand/([^/]+)$#", $path, $matches)) {
+            $brand = $matches[1];
             if (empty($brand)) {
-                http_response_code(400);
-                echo json_encode(["message" => "Brand name is missing"]);
-                exit;
+                $this->sendErrorResponse(400, "Brand name is missing");
+                return;
             }
 
             include __DIR__ . "/../api/getProductsByBrand.php";
             return;
         }
 
-        if ($method === "GET" && strpos($path, "/api/product/") == 0) {
-            $id = str_replace("/api/product", "", $path);
-            error_log("Id:" . $id);
-
+        // GET: Product by ID
+        if ($method === "GET" && preg_match("#^/api/product/(\d+)$#", $path, $matches)) {
+            $id = $matches[1];
             if (empty($id)) {
-                http_response_code(400);
-                echo json_encode(["message" => "id is missing"]);
-                exit;
+                $this->sendErrorResponse(400, "ID is missing");
+                return;
             }
 
-            include __DIR__ . "./../api/getProductById.php";
+            include __DIR__ . "/../api/getProductById.php";
             return;
         }
 
-        if ($method == "POST" && $path == "/api/addProduct") {
+        // POST: Add product
+        if ($method === "POST" && $path === "/api/addProduct") {
             include __DIR__ . "/../api/createProducts.php";
             return;
         }
 
+        // PUT: Update product
         if ($method === "PUT" && preg_match("#^/api/update/(\d+)$#", $path, $matches)) {
-            $id = $matches[1]; // Ambil ID dari path
-            error_log("Id: " . $id);
-
+            $id = $matches[1];
             if (empty($id)) {
-                http_response_code(400); // Bad Request
-                echo json_encode(["message" => "ID is missing"]);
-                exit;
+                $this->sendErrorResponse(400, "ID is missing");
+                return;
             }
 
             include __DIR__ . "/../api/updateProducts.php";
             return;
         }
 
+        // PUT: Buy product
         if ($method === "PUT" && preg_match("#^/api/buy/(\d+)$#", $path, $matches)) {
-            $id = $matches[1]; // Ambil ID dari hasil pencocokan regex
-            error_log("Id: " . $id);
-
-            // Periksa apakah ID valid
+            $id = $matches[1];
             if (empty($id)) {
-                http_response_code(400);
-                echo json_encode(["message" => "ID is missing"]);
-                exit;
+                $this->sendErrorResponse(400, "ID is missing");
+                return;
             }
 
-            // Masukkan file untuk proses pembelian
-            include __DIR__ . "/../api/buyProduct.php";  // Gunakan path relatif yang benar
+            include __DIR__ . "/../api/buyProduct.php";
             return;
         }
 
+        // DELETE: Delete product
         if ($method === "DELETE" && preg_match("#^/api/delete/(\d+)$#", $path, $matches)) {
             $id = $matches[1];
-            error_log(" Id: " . $id);
             if (empty($id)) {
-                http_response_code(400);
-                echo json_encode(["message" => " ID is missing"]);
-                exit;
+                $this->sendErrorResponse(400, "ID is missing");
+                return;
             }
+
             include __DIR__ . "/../api/deleteProducts.php";
             return;
         }
 
-        http_response_code(404);
+        // Route not found
+        $this->sendErrorResponse(404, "Route Not Found");
+    }
+
+    private function sendErrorResponse($statusCode, $message)
+    {
+        http_response_code($statusCode);
         echo json_encode([
             "status" => "Error",
-            "message" => "Route Notfound"
+            "message" => $message
         ]);
     }
 }

@@ -1,24 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TERRA-BRAIN STORE</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+
+        header {
+            background-color: #1c1c1c;
+            padding: 1em 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+
+        .logo img {
+            max-width: 80px;
+            height: auto;
+        }
+
+        .logo h1 {
+            font-size: 1.5em;
+            color: white;
+            white-space: nowrap;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5em;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 2em 1em;
+            background-color: #1c1c1c;
+            margin-bottom: 2em;
+        }
+
+        main {
+            flex: 1;
+            /* Main content expands to fill available space */
+        }
+
+        .products {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .products h3 {
+            margin-bottom: 1em;
+            font-size: 1.5em;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5em;
+        }
+
+        .product-card {
+            background-color: #232323;
+            border-radius: 10px;
+            padding: 1em;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Add smooth transition */
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            /* Move the card slightly upwards */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            /* Add a stronger shadow */
+        }
+
+        .product-card img {
+            max-width: 100%;  /* Ensures image fits within the card */
+            height: 200px;    /* Set a fixed height for uniformity */
+            object-fit: cover; /* Ensures the image covers the box without distorting */
+            border-radius: 5px; /* Rounded corners for a cleaner look */
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover img {
+            transform: scale(1.05); /* Slightly zoom in on hover */
+        }
+        
+
+        .add-to-cart {
+            transition: color 0.3s ease, background-color 0.3s ease;
+            /* Smooth transition for button color */
+            display: inline-block;
+            margin-top: 1em;
+            padding: 0.5em 1em;
+            background-color: #1cbd1c;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            background-color: #17a317;
+            /* Slightly darker green when hovering */
+            color: white;
+        }
+
+
+        footer {
+            background-color: #1c1c1c;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .logo {
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 1em;
+            }
+
+            .products h3 {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <img src="/Demo/Frontend/asset/terra_brain_logo.png" alt="">
+                <img src="/Demo/Frontend/asset/terra_brain_logo.png" alt="TERRA-BRAIN Logo">
                 <h1>TERRA-BRAIN STORE</h1>
             </div>
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
                     <li><a href="#">Catalog</a></li>
-                    <li><a href="#">Ketentuan Garansi</a></li>
+                    <li><a href="ketentuan-garansi.html">Ketentuan Garansi</a></li>
                 </ul>
             </nav>
         </div>
@@ -28,7 +197,7 @@
         <section class="hero">
             <h2>The Best Computer Store</h2>
             <p>
-                TERRA-BRAIN provides Processors, RAM, GPU, Motherboards, SSD, HDD, PSU, FAN, CASE, and many more. 
+                TERRA-BRAIN provides Processors, RAM, GPU, Motherboards, SSD, HDD, PSU, FAN, CASE, and many more.
                 Everything you need is in one place!
             </p>
         </section>
@@ -47,16 +216,121 @@
     </main>
 
     <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="/Demo/Frontend/asset/terra_brain_logo.png" alt="">
-                <p>TERRA-BRAIN STORE</p>
-            </div>
-            
-            <p>TERRA-BRAIN The Best Computer Shop</p>
-            <p>&copy; 2024 TERRA-BRAIN</p>
-        </div>
+        <p>TERRA-BRAIN The Best Computer Shop</p>
+        <p>&copy; 2024 TERRA-BRAIN</p>
     </footer>
-    <script src="script.js"></script>
 </body>
+
+<script>
+    let lastFetchedData = null; // To store the last fetched data for comparison
+
+    const productTemplate = (product) => `
+    <div class="product-card" onclick="viewProductDetail(${product.id})">
+        <img src="${product.blobUrl}" alt="${product.nama}">
+        <h4>${product.nama}</h4>
+        <p class="price">${formatRupiah(product.price)}</p>
+        <p>Stok: ${product.stok}</p>
+        <button class="add-to-cart" data-id="${product.id}">Masukkan Keranjang</button>
+    </div>
+    `;
+    
+    // Helper function to format the price to Indonesian Rupiah (Rp) with comma as decimal separator
+    function formatRupiah(amount) {
+        amount = parseFloat(amount);  // Convert to a floating point number
+        if (isNaN(amount) || amount === null || amount <= 0) {
+            return "Rp 0,00";  // Return default value if invalid
+        }
+
+        let formattedAmount = amount.toFixed(2);  // Ensure two decimal places
+        let [integerPart, decimalPart] = formattedAmount.split('.');
+    
+        // Format the integer part with periods as thousands separators
+        integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    
+        // Return the formatted price with comma as decimal separator
+        return `Rp ${integerPart},${decimalPart}`;
+    }
+
+    // Function to fetch and render products
+    function fetchAndRenderProducts() {
+        const popularProducts = document.getElementById('popular-products');
+        const newProducts = document.getElementById('new-products');
+
+        fetch('http://localhost:8000/api/allProducts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ action: 'fetchProducts' }),
+        })
+            .then((response) => {
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+                return response.json();
+            })
+            .then((data) => {
+                // Check if the fetched data has changed
+                if (JSON.stringify(data) !== JSON.stringify(lastFetchedData)) {
+                    // If data has changed, update the page
+                    lastFetchedData = data; // Update the last fetched data
+                    const popular = data.slice(0, 4);
+                    const latest = data.slice(4);
+
+                    renderProducts(popularProducts, popular);
+                    renderProducts(newProducts, latest);
+                }
+            })
+            .catch((error) => console.error('Error fetching products:', error));
+    }
+
+    function renderProducts(container, products) {
+        const promises = products.map((product) => {
+            const imageUrl = product.image ? `data:image/jpeg;base64,${product.image}` : 'placeholder.jpg';
+            return Promise.resolve({ ...product, blobUrl: imageUrl });
+        });
+
+        Promise.all(promises).then((productsWithBlobs) => {
+            container.innerHTML = productsWithBlobs
+                .map((product) => productTemplate(product))
+                .join('');
+
+            document.querySelectorAll('.add-to-cart').forEach((button) => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const productId = event.target.dataset.id;
+                    addToCart(productId);  // Add product to cart
+                });
+            });
+        });
+    }
+
+    // Function to add product to cart
+    function addToCart(productId) {
+        fetch(`http://localhost:8000/api/buy/${productId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                alert(`Product ${data.name} added to cart successfully!`);
+                fetchAndRenderProducts();
+            })
+            .catch(error => console.error('Error adding to cart:', error));
+    }
+
+    function viewProductDetail(productId) {
+        window.location.href = `product-detail.html?id=${productId}`;
+    }
+
+    // Initial fetch
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchAndRenderProducts();
+
+        // Set interval to check for changes every 10 seconds
+        setInterval(fetchAndRenderProducts, 5000);
+    });
+</script>
+
 </html>

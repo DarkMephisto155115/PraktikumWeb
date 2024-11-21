@@ -15,7 +15,7 @@ class DbConfig {
         try {
             // Menggunakan MySQLi untuk membuat koneksi
             $this->conn = new \mysqli($this->host, $this->username, $this->password, $this->db_name);
-
+            
             // Cek apakah koneksi berhasil
             if ($this->conn->connect_error) {
                 throw new \Exception("Connection failed: " . $this->conn->connect_error);
@@ -26,4 +26,6 @@ class DbConfig {
         }
         return $this->conn;
     }
+
+    
 }
