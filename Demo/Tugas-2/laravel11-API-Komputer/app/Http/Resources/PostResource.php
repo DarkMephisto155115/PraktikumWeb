@@ -7,18 +7,18 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PostResource extends JsonResource
 {
-    //define properti 
+    //define properti
     public $status;
     public $message;
     public $resource;
 
-    /** 
-     * __construct 
-     * 
-     * @param  mixed $status 
-     * @param  mixed $message 
-     * @param  mixed $resource 
-     * @return void 
+    /**
+     * __construct
+     *
+     * @param  mixed $status
+     * @param  mixed $message
+     * @param  mixed $resource
+     * @return void
      */
     public function __construct($status, $message, $resource)
     {
@@ -27,11 +27,11 @@ class PostResource extends JsonResource
         $this->message = $message;
     }
 
-    /** 
+    /**
      * toArray
-     * 
-     * @param  mixed $request 
-     * @return array 
+     *
+     * @param  mixed $request
+     * @return array
      */
     public function toArray(Request $request): array
     {

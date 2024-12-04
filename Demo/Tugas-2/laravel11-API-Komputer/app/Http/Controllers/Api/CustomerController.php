@@ -5,147 +5,125 @@ namespace App\Http\Controllers\Api;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
+use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
     /**
-     * Display a listing of the customers.
+     * index
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return void
      */
     public function index()
     {
-        // Fetch all customers
-        $customers = Customer::all();
+        // Get all posts
+        $posts = Customer::latest()->paginate(5);
 
-        // Return response
-        return response()->json([
-            'success' => true,
-            'message' => 'Customer list retrieved successfully.',
-            'data'    => $customers
-        ], 200);
+        // Return collection of posts as a resource
+        return new PostResource(true, 'List Data Posts', $posts);
     }
 
     /**
-     * Store a newly created customer in the database.
+     * store
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed $request
+     * @return void
      */
     public function store(Request $request)
     {
-        // Validate request
-        $request->validate([
-            'name'    => 'required|string|max:255',
-            'email'   => 'required|email|unique:customers,email',
-            'address' => 'required|string',
-            'phone'   => 'nullable|string|max:15',
+        // Define validation rules
+        $validator = Validator::make($request->all(), [
+            'nama'        => 'required',
+            'email'    => 'required',
+            'alamat' => 'required',
+            'no_hp'       => 'required',
         ]);
 
-        // Create a new customer
-        $customer = Customer::create($request->all());
+        // Check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        // Create post
+        $post = Customer::create([
+            'nama'        => $request->nama,
+            'email'    => $request->email,
+            'alamat'       => $request->alamat,
+            'no_hp'        => $request->no_hp,
+        ]);
 
         // Return response
-        return response()->json([
-            'success' => true,
-            'message' => 'Customer created successfully.',
-            'data'    => $customer
-        ], 201);
+        return new PostResource(true, 'Data Post Berhasil Ditambahkan!', $post);
     }
-    
 
     /**
-     * Display the specified customer.
+     * show
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed $id
+     * @return void
      */
     public function show($id)
     {
-        // Find customer by ID
-        $customer = Customer::find($id);
+        // Find post by ID
+        $post = Customer::find($id);
 
-        // If customer not found
-        if (!$customer) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Customer not found.',
-            ], 404);
-        }
-
-        // Return response
-        return response()->json([
-            'success' => true,
-            'message' => 'Customer retrieved successfully.',
-            'data'    => $customer
-        ], 200);
+        // Return single post as a resource
+        return new PostResource(true, 'Detail Data Post!', $post);
     }
 
     /**
-     * Update the specified customer in the database.
+     * update
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return void
      */
     public function update(Request $request, $id)
     {
-        // Find customer by ID
-        $customer = Customer::find($id);
-
-        // If customer not found
-        if (!$customer) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Customer not found.',
-            ], 404);
-        }
-
-        // Validate request
-        $request->validate([
-            'name'    => 'sometimes|required|string|max:255',
-            'email'   => 'sometimes|required|email|unique:customers,email,' . $id,
-            'address' => 'sometimes|required|string',
-            'phone'   => 'nullable|string|max:15',
+        // Define validation rules
+        $validator = Validator::make($request->all(), [
+            'nama'        => 'required',
+            'email'    => 'required',
+            'alamat' => 'required',
+            'no_hp'       => 'required',
         ]);
 
-        // Update customer
-        $customer->update($request->all());
+        // Check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        // Find post by ID
+        $post = Customer::find($id);
+
+        $post->update([
+            'nama'        => $request->nama,
+            'email'    => $request->email,
+            'alamat'       => $request->alamat,
+            'no_hp'        => $request->no_hp,
+        ]);
+
 
         // Return response
-        return response()->json([
-            'success' => true,
-            'message' => 'Customer updated successfully.',
-            'data'    => $customer
-        ], 200);
+        return new PostResource(true, 'Data Post Berhasil Diubah!', $post);
     }
 
     /**
-     * Remove the specified customer from the database.
+     * destroy
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed $id
+     * @return void
      */
     public function destroy($id)
     {
-        // Find customer by ID
-        $customer = Customer::find($id);
+        // Find post by ID
+        $post = Customer::find($id);
 
-        // If customer not found
-        if (!$customer) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Customer not found.',
-            ], 404);
-        }
-
-        // Delete customer
-        $customer->delete();
+        // Delete post
+        $post->delete();
 
         // Return response
-        return response()->json([
-            'success' => true,
-            'message' => 'Customer deleted successfully.'
-        ], 200);
+        return new PostResource(true, 'Data Post Berhasil Dihapus!', null);
     }
 }
